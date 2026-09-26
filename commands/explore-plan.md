@@ -11,7 +11,7 @@ Create `.claude/sessions/context_session_{feature_name}.md` where plan is going 
 First, explore the relevant files in the repository
 
 # Team Selection (parallel execution if posible)
-Select what subagents are going to be involved in the future adont invoque them only let me know who are you going to ask advice and for what. Only select "planner" subagents. If you select ddd-planner wait until this subagent finish their job to call the respective fastapi-planner or djangorestframework-planner.
+Select what subagents are going to be involved in the future adont invoque them only let me know who are you going to ask advice and for what. Only select "planner" subagents. If you select ddd-planner wait until this subagent finish their job to call the respective fastapi-planner or djangorestframework-planner. If the request has a user interface, select frontend-planner and call it after the backend planners so it can read their API contracts.
 
 # Plan
 Next, think hard and write up a detailed implementation plan. Don't forget to include tests, lookbook components, and documentation. Use your judgement as to what is necessary, given the standards of this repo.
@@ -21,9 +21,9 @@ If there are things you still do not understand or questions you have for the us
 # Advice
 Use in parallel the subagents needed to get knowledge and advice over the plan to get a complete implementation.
 
-**IMPORTANT for planner subagents (ddd-planner, fastapi-planner, djangorestframework-planner):**
+**IMPORTANT for planner subagents (ddd-planner, fastapi-planner, djangorestframework-planner, frontend-planner):**
 - When invoking planner agents, you MUST provide the FULL context from the session file
-- Tell them to create their detailed implementation plan document (backend.md, fastapi.md, drf.md)
+- Tell them to create their detailed implementation plan document (backend.md, fastapi.md, drf.md, frontend.md)
 - Do NOT ask for "quick validation" or "brief recommendations"
 - Let them do their complete job: read context session → create detailed plan → save to docs/features/{feature_name}/
 - If agent hits token limit, the plan may still be saved - check docs/features/{feature_name}/ for the file
@@ -49,6 +49,7 @@ Update the context_session file with:
 - Explicit references to detailed implementation documents created:
   - `docs/features/{feature_name}/backend.md` (if DDD architecture planning was done)
   - `docs/features/{feature_name}/fastapi.md` or `drf.md` (if framework-specific planning was done)
+  - `docs/features/{feature_name}/frontend.md` (if frontend planning was done)
 - Summary of key architectural decisions from these documents
 
 # Clarification

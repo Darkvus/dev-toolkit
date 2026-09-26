@@ -1,14 +1,15 @@
 {
-  "name": "backend-toolkit",
+  "name": "dev-toolkit",
+  "description": "Darkvus full-stack development kit for Claude Code: DDD backend planning and conventions plus React + Vite + shadcn/ui frontend skills",
   "owner": {
     "name": "Darkvus",
     "email": "alexcaraballo96@gmail.com"
   },
   "plugins": [
     {
-      "name": "backend-toolkit",
+      "name": "dev-toolkit",
       "source": "./",
-      "description": "Backend development kit: DDD agents, workflow commands, and convention skills for Python"
+      "description": "Full-stack development kit: DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills, planner and commands"
     }
   ]
 }

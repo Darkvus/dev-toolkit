@@ -179,11 +179,13 @@ Select which planner subagents will be involved based on each microservice's tec
 | Python Django | DaaS | daas-planner |
 | Python FastAPI | Any | fastapi-planner |
 | Python (general) | Any | ddd-planner |
+| React + Vite (frontend) | Any | frontend-planner |
 
 **Agent Execution Order:**
 1. First invoke **ddd-planner** to establish domain architecture
 2. Wait for completion
 3. Then invoke framework-specific planners (**fastapi-planner**, **djangorestframework-planner**, **daas-planner**)
+4. If the feature has a user interface, invoke **frontend-planner** after the backend planners, passing their plans so the UI uses the real API contract
 
 Present the team selection to user:
 

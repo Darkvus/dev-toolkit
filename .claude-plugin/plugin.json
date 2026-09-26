@@ -1,11 +1,11 @@
 {
-  "name": "backend-toolkit",
-  "version": "1.0.1",
-  "description": "Backend development kit: DDD agents, workflow commands, and convention skills for Python",
+  "name": "dev-toolkit",
+  "version": "2.0.0",
+  "description": "Full-stack development kit: DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills, planner and commands",
   "author": {
     "name": "Darkvus",
     "email": "alexcaraballo96@gmail.com"
   },
-  "keywords": ["ddd", "fastapi", "django", "python", "backend"],
-  "repository": "https://github.com/Darkvus/backend-toolkit"
+  "keywords": ["ddd", "fastapi", "django", "python", "backend", "frontend", "react", "vite", "shadcn", "tailwind"],
+  "repository": "https://github.com/Darkvus/dev-toolkit"
 }
