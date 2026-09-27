@@ -2,7 +2,7 @@
 name: fastapi-planner
 description: Translate Domain-Driven Design architecture into concrete FastAPI implementation plans with routers, dependency injection, and repository patterns.
 model: sonnet
-tools: Bash, Read, Write, Grep
+tools: Read, Write, Grep
 color: blue
 ---
 

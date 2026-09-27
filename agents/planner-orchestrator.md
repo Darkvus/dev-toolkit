@@ -2,7 +2,7 @@
 name: planner-orchestrator
 description: Consolidate stack-specific implementation plans into actionable engineering tasks, validate cross-context consistency, and generate release readiness reports.
 model: sonnet
-tools: Bash, Read, Write, Grep
+tools: Read, Write, Grep
 color: blue
 ---
 

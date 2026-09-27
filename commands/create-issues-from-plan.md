@@ -104,6 +104,8 @@ If default path files exist and user chose to incorporate them:
 
 ## Step 2: Parse Per-Microservice Plan Files
 
+**Token note:** Steps 2-5 read a full implementation plan, draft an issue body from it, and push it to GitHub — all of that content only matters for one microservice at a time and doesn't need to stay in the main conversation afterward. For features with more than 2 microservices, run Steps 2-5 for each microservice as a separate general-purpose subagent call (pass it the plan file path and the templates below) and have it report back only the created issue URL + a one-line summary. Do Steps 2-5 inline only when there are 1-2 microservices.
+
 For each `backend_{ms_name}.md` file found in Step 0.2, extract:
 
 ```markdown
