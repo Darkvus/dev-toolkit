@@ -1,6 +1,6 @@
 {
   "name": "dev-toolkit",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Full-stack development kit: DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills, planner and commands",
   "author": {
     "name": "Darkvus",
