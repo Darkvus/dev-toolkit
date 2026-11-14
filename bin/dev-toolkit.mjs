@@ -30,6 +30,9 @@ CLI (delegated to skills/dev-toolkit/scripts/dev-toolkit.mjs)
   detect      Detect the project's stack
   context     Print the project context used by /dev-toolkit commands
   doctor      Check the project and the install for problems
+  commit-msg  Check a commit message against the convention
+  hooks       on | off | status for the post-edit convention hook
+  ignore      Add an ignore rule or file glob to .dev-toolkit/config.json
 
 Options
   --target <claude|generic>  Where to install (default: claude)
@@ -302,6 +305,6 @@ switch (cmd) {
   case "update": install(flags, "update"); break;
   case "uninstall": uninstall(flags); break;
   case "status": status(flags); break;
-  case "detect": case "context": case "doctor": delegate(cmd, process.argv.slice(3)); break;
+  case "detect": case "context": case "doctor": case "commit-msg": case "hooks": case "ignore": delegate(cmd, process.argv.slice(3)); break;
   default: fail(`unknown command "${cmd}". Run with --help.`);
 }
