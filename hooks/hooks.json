@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "command -v node >/dev/null 2>&1 && [ -f \"${CLAUDE_PLUGIN_ROOT}/skills/dev-toolkit/scripts/dev-toolkit.mjs\" ] && node \"${CLAUDE_PLUGIN_ROOT}/skills/dev-toolkit/scripts/dev-toolkit.mjs\" hook || true",
+            "timeout": 5,
+            "statusMessage": "Checking conventions"
+          }
+        ]
+      }
+    ]
+  }
+}
