@@ -63,6 +63,8 @@ Planning agents that translate architecture and requirements into stack-specific
 | `dev-toolkit-reviewer` | Audit a diff or paths against the conventions (CLI findings plus judgment); returns an ordered fix list. |
 | `dev-toolkit-documenter` | Generate `CONVENTIONS.md` and `.dev-toolkit/context.json` from the built code. |
 
+> **Other tools:** this toolkit also works with [OpenCode](https://opencode.ai) (`scripts/install-opencode.sh`) and [Codex CLI](https://developers.openai.com/codex) (`scripts/install-codex.sh`). See [INSTALL.md](INSTALL.md).
+
 ### Commands
 
 Slash commands for common workflows.
@@ -71,6 +73,7 @@ Slash commands for common workflows.
 |---|---|
 | `/explore-plan` | Explore, select a team/agent, plan, and iterate on a user request. |
 | `/start-working-on-technical-plan` | Turn a Technical Specification into a consolidated implementation plan across microservices (and frontend). |
+| `/technical-plan` | Generate a technical plan, always in Spanish, from a specification (file path or pasted text). |
 | `/create-issues-from-plan` | Create GitHub issues in each affected microservice repository from per-microservice plans. |
 | `/create-new-gh-issue` | Create a new GitHub issue for a feature from a context session file. |
 | `/start-working-on-issue` | Implement a GitHub issue created by `create-issues-from-plan`. |
