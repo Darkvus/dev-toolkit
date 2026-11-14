@@ -2,7 +2,7 @@
 name: daas-planner
 description: Translate Domain-Driven Design (DDD) architecture into Django-based Data as a Service (DaaS) implementation plans optimized for data exposure and querying.
 model: sonnet
-tools: Bash, Read, Write, Grep
+tools: Read, Write, Grep
 color: blue
 ---
 

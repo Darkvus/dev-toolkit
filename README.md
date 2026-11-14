@@ -9,6 +9,43 @@ The frontend conventions are designed to consume the backend ones: the same erro
 
 > Formerly `backend-toolkit`. See [INSTALL.md](INSTALL.md#migrating-from-backend-toolkit) to migrate.
 
+## Front door: `/dev-toolkit`
+
+Since 3.0 there is one entry point. `/dev-toolkit` with no arguments detects your stack (FastAPI, DRF, Django DaaS, React + Vite + shadcn) and prints a menu; `/dev-toolkit <command>` routes to a short reference file that loads only the convention skills, agents and commands that command needs. Nothing was removed: every skill, agent and slash command below still works on its own.
+
+| Command | What it does |
+|---|---|
+| `/dev-toolkit plan <feature>` | Plan across DDD, API and frontend planners, then consolidate |
+| `/dev-toolkit scaffold <backend\|frontend> <name>` | New service layout or React + Vite + shadcn app |
+| `/dev-toolkit crud <resource> <endpoint>` | Backend resource and/or frontend list + forms |
+| `/dev-toolkit api <endpoint>` | Design or change an endpoint contract |
+| `/dev-toolkit review [paths \| --changed]` | `dev-toolkit-reviewer` agent: CLI findings plus judgment, ordered fix list |
+| `/dev-toolkit commit` | Write a commit message and check it (gitmoji + conventional + `Refs:`) |
+| `/dev-toolkit audit [paths]` | Whole-project convention scan, grouped and prioritised |
+| `/dev-toolkit document` | `dev-toolkit-documenter` agent: `CONVENTIONS.md` and `.dev-toolkit/context.json` from the built code |
+| `/dev-toolkit doctor` | Plugin files, versions and project config drift |
+| `/dev-toolkit context` | Detected stack, layout, git state, applicable conventions |
+| `/dev-toolkit hooks <on\|off\|status>` | Control the post-edit convention hook |
+
+### CLI
+
+The checker is a zero-dependency Node 18+ script (`skills/dev-toolkit/scripts/dev-toolkit.mjs`). Use it directly in CI or a terminal:
+
+```bash
+node skills/dev-toolkit/scripts/dev-toolkit.mjs context                  # stack, layout, git, directives
+node skills/dev-toolkit/scripts/dev-toolkit.mjs detect src/ --json       # findings with file:line and severity
+node skills/dev-toolkit/scripts/dev-toolkit.mjs detect --changed         # only files changed vs HEAD
+node skills/dev-toolkit/scripts/dev-toolkit.mjs detect --list-rules
+node skills/dev-toolkit/scripts/dev-toolkit.mjs commit-msg -m "feat(api): add x"
+node skills/dev-toolkit/scripts/dev-toolkit.mjs doctor
+```
+
+`detect` exits 1 on errors (`--fail-on warn|never` to change). Rules come from the skills: PATCH-only updates, integer cents/meters/seconds, UTC datetimes, DDD dependency direction, error envelope, `limit`/`offset`/`ordering`/`from_`/`to_` query params, single typed API client, `Intl` formatting helpers, vendored `components/ui`, theme tokens, accessibility labels, commit format. Run the tests with `node --test`.
+
+### Hook
+
+A `PostToolUse` hook on `Edit|Write` runs the detector on the changed file and adds a few lines to the agent's context when it finds violations. It never blocks an edit, checks one file, and is silent when clean. Opt out per project with `.dev-toolkit/config.json` (`"hooks": "off"`, `ignoreRules`, `ignoreFiles`) or `/dev-toolkit hooks off`. Suppress one finding with `# dev-toolkit-ignore <rule>` (or `//`).
+
 ## What's included
 
 ### Agents
@@ -23,6 +60,8 @@ Planning agents that translate architecture and requirements into stack-specific
 | `daas-planner` | Translate DDD architecture into Django-based Data as a Service (DaaS) implementation plans. |
 | `frontend-planner` | Translate features and backend API plans into React + Vite + shadcn/ui plans (routes, components, API hooks, forms, tables, tests). |
 | `planner-orchestrator` | Consolidate stack-specific plans into actionable engineering tasks and release readiness reports. |
+| `dev-toolkit-reviewer` | Audit a diff or paths against the conventions (CLI findings plus judgment); returns an ordered fix list. |
+| `dev-toolkit-documenter` | Generate `CONVENTIONS.md` and `.dev-toolkit/context.json` from the built code. |
 
 > **Other tools:** this toolkit also works with [OpenCode](https://opencode.ai) (`scripts/install-opencode.sh`) and [Codex CLI](https://developers.openai.com/codex) (`scripts/install-codex.sh`). See [INSTALL.md](INSTALL.md).
 
@@ -45,7 +84,7 @@ Slash commands for common workflows.
 
 ### Skills
 
-Convention references that Claude loads automatically when relevant.
+`dev-toolkit` is the orchestrator skill described above. The rest are convention references that Claude loads automatically when relevant.
 
 #### Backend
 
@@ -81,6 +120,8 @@ Convention references that Claude loads automatically when relevant.
 The frontend skills cover **team conventions**. For the shadcn/ui component catalog and CLI reference, `/scaffold-frontend` can also install the official tooling (`npx skills add shadcn/ui` and the shadcn MCP server).
 
 ## Typical flow
+
+Shortcut: `/dev-toolkit plan <feature>`, then `/dev-toolkit crud <resource> <endpoint>`, then `/dev-toolkit review --changed`. Spelled out:
 
 1. `/explore-plan <feature>` → `ddd-planner` → `fastapi-planner` / `djangorestframework-planner` → `frontend-planner`
 2. `planner-orchestrator` consolidates the plans into task lists

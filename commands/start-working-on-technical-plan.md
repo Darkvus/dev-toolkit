@@ -167,6 +167,8 @@ For each cloned repository:
 - Find relevant existing code related to the feature
 - Document technology stack and architecture
 
+Write this analysis into the session file under a `### Codebase Analysis: {ms_name}` subsection (paths, existing patterns, relevant files, tech stack — 1 paragraph + a short file list, not a dump of file contents). This is the ONLY codebase exploration that should happen for this microservice — planner subagents in the Advice phase reuse this summary instead of re-scanning the repo.
+
 ---
 
 # Team Selection
@@ -243,6 +245,7 @@ Invoke the selected planner subagents to get detailed implementation guidance.
 - Tell them to create their detailed implementation plan
 - Do NOT ask for "quick validation" or "brief recommendations"
 - Let them do their complete job
+- Pass the `### Codebase Analysis: {ms_name}` summary written in step 5 and tell the agent to treat it as ground truth: it should only `Read` the specific files it plans to modify or extend, not re-run `tree`/full-directory scans of the cloned repo — that exploration already happened once and re-doing it per agent burns tokens for no new information
 
 **Prompt structure for planner agents:**
 
@@ -259,10 +262,10 @@ Save your plan to: `docs/features/{feature_name}/backend_{ms_name}.md`
 **Requirements for this microservice**:
 {Extract relevant sections from technical spec}
 
-**Existing code structure**:
-{Summary from Explore phase}
+**Existing code structure** (from prior analysis — treat as ground truth, only re-read files you intend to change):
+{Codebase Analysis: {ms_name} section from step 5}
 
-Please analyze the existing codebase and create your detailed implementation plan. Focus on:
+Please create your detailed implementation plan based on the analysis above. Focus on:
 1. Files to create/modify
 2. Domain entities and business logic
 3. API endpoints

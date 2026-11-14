@@ -2,7 +2,7 @@
 name: frontend-planner
 description: Translate feature requirements and backend implementation plans into concrete React + Vite + shadcn/ui frontend plans with pages, components, API hooks, forms, tables and tests.
 model: sonnet
-tools: Bash, Read, Write, Grep
+tools: Read, Write, Grep
 color: purple
 ---
 

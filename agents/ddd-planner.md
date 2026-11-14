@@ -2,7 +2,7 @@
 name: ddd-planner
 description: Design or refactor Python backend architecture using Domain-Driven Design principles with layered architecture (domain, application, infrastructure layers).
 model: sonnet
-tools: Bash, Read, Write, Grep
+tools: Read, Write, Grep
 color: blue
 ---
 

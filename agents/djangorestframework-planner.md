@@ -2,7 +2,7 @@
 name: djangorestframework-planner
 description: Translate Domain-Driven Design (DDD) architecture into Django REST Framework implementation plans with Clean Architecture layering.
 model: sonnet
-tools: Bash, Read, Write, Grep
+tools: Read, Write, Grep
 color: blue
 ---
 

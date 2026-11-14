@@ -1,0 +1,30 @@
+{
+  "name": "dev-toolkit",
+  "version": "3.0.0",
+  "description": "Full-stack development kit for Claude Code and other agent tools: DDD backend and React + Vite + shadcn/ui conventions as skills, agents and commands.",
+  "type": "module",
+  "license": "UNLICENSED",
+  "repository": "github:Darkvus/dev-toolkit",
+  "bin": {
+    "dev-toolkit": "bin/dev-toolkit.mjs"
+  },
+  "files": [
+    "bin",
+    "skills",
+    "agents",
+    "commands",
+    "hooks",
+    ".claude-plugin",
+    "README.md",
+    "INSTALL.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "docs:build": "node docs/build.mjs",
+    "docs:preview": "node docs/build.mjs --serve",
+    "docs:check": "node docs/check-links.mjs"
+  }
+}

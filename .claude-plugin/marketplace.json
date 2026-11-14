@@ -9,7 +9,8 @@
     {
       "name": "dev-toolkit",
       "source": "./",
-      "description": "Full-stack development kit: DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills, planner and commands"
+      "description": "Full-stack development kit: /dev-toolkit front door, convention checker CLI and edit hook, reviewer and documenter agents, DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills",
+      "version": "3.0.0"
     }
   ]
 }

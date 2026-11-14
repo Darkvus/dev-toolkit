@@ -1,11 +1,27 @@
 {
   "name": "dev-toolkit",
-  "version": "2.1.0",
-  "description": "Full-stack development kit: DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills, planner and commands",
+  "version": "3.0.0",
+  "description": "Full-stack development kit: one /dev-toolkit front door (plan, scaffold, crud, api, review, commit, audit, document, doctor), a zero-dependency convention checker CLI and edit hook, DDD backend agents and conventions for Python (FastAPI, DRF) plus React + Vite + shadcn/ui frontend skills",
   "author": {
     "name": "Darkvus",
     "email": "alexcaraballo96@gmail.com"
   },
-  "keywords": ["ddd", "fastapi", "django", "python", "backend", "frontend", "react", "vite", "shadcn", "tailwind"],
-  "repository": "https://github.com/Darkvus/dev-toolkit"
+  "keywords": [
+    "ddd",
+    "fastapi",
+    "django",
+    "python",
+    "backend",
+    "frontend",
+    "react",
+    "vite",
+    "shadcn",
+    "tailwind",
+    "orchestrator",
+    "conventions",
+    "hooks",
+    "cli"
+  ],
+  "repository": "https://github.com/Darkvus/dev-toolkit",
+  "skills": "./skills/"
 }
