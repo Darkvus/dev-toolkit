@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Installer tests
+        run: npm test
+      - name: CLI tests
+        run: node --test skills/dev-toolkit/scripts/dev-toolkit.test.mjs
+      - name: Plugin doctor
+        run: node skills/dev-toolkit/scripts/dev-toolkit.mjs doctor
+      - name: Docs build and link check
+        run: |
+          node docs/build.mjs
+          node docs/check-links.mjs
